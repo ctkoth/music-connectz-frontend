@@ -1,40 +1,77 @@
+.a11y-focus {
+    outline: 2px dashed #f00;
+    outline-offset: 4px;
+}
+
 .high-contrast {
-  background-color: #000;
-  color: #FFF;
+    background-color: #000;
+    color: #fff;
 }
 
-[aria-label] {
-  display: inline-block;
+[data-role="alert"] {
+    position: relative;
+    padding: 15px;
+    background-color: #ffcc00;
+    color: #333;
+    border: 1px solid #ccc;
 }
 
-:focus {
-  outline: 2px solid #FFD700;
-  outline-offset: 2px;
+@media (prefers-color-scheme: dark) {
+    .content {
+        background-color: #333;
+        color: #fff;
+    }
 }
 
-/* Keyboard Navigation Support */
-/* Avoid blocking the focus trap */
-:focus-visible {
-  outline: none;
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
 }
 
-/* Screen Reader Support */
-/* Hide visually but keep content accessible */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+/* ARIA roles support - make sure to use appropriate roles where necessary */
+/* Example: <div role='alert'>Important message</div> */
+
+button:focus, a:focus {
+    outline: 2px solid #00f;
+}
+
+/* Keyboard Navigation Improvements */
+nav a {
+    display: inline-block;
+    position: relative;
+}
+
+/* High Contrast Mode Styles */
+@media screen and (forced-colors: active) {
+    body {
+        background: Window;
+        color: WindowText;
+    }
+    a {
+        color: Link;
+    }
+}
+
+/* Screen Reader Optimization */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 
 /* Color Blindness Support */
-/* Use patterns and textures alongside colors for accessibility */
-.color-blind-support {
-  background-image: linear-gradient(45deg, #f06, transparent 25%, transparent 75%, #f06 75%, #f06),
-    linear-gradient(135deg, #06f, transparent 25%, transparent 75%, #06f 75%, #06f);
-  background-size: 20px 20px;
+.color-blind-norm {
+    background-color: rgba(255, 255, 0, 0.5);
+    border: 1px solid rgba(255, 255, 0, 1);
+}
+
+.color-blind-contrast {
+    color: #f00;
+    background-color: #00f;
 }
